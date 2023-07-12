@@ -1,5 +1,5 @@
-const { getAllUsers, userIdWithMethod } = require("../utils/helpers");
-const { StatusCodes } = require('http-status-codes');
+import { getAllUsers, userIdWithMethod } from "../utils/helpers";
+import { StatusCodes } from 'http-status-codes';
 
 describe('Health test', () => {
     describe("GET /users", () => {
@@ -12,6 +12,7 @@ describe('Health test', () => {
 
         it('should return single user', async () => {
             const response = await userIdWithMethod("GET", 2);
+            console.log("RESPONSE: ", JSON.stringify(response.data))
             expect(response.data).toBeInstanceOf(Object);
             expect(response.data.data.id).toBe(2);
             expect(response.status).toBe(StatusCodes.OK);
