@@ -1,3 +1,4 @@
 # Dependency Packages
 node_modules/
 built/
+jest-stare/
