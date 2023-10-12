@@ -4,7 +4,13 @@
   "description": "API test with jest",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config jest.config.ts"
+    "build": "tsc",
+    "test": "jest --config jest.config.ts",
+    "test:health": "jest -t=health",
+    "test:regression": "jest -t=regression",
+    "test:retry": "jest -t=retry",
+    "test:ignore": "jest --testPathIgnorePatterns=retry",
+    "test:debug": "jest -i"
   },
   "repository": {
     "type": "git",
@@ -29,7 +35,6 @@
   },
   "dependencies": {
     "axios": "^1.2.2",
-    "dotenv": "^16.0.3",
     "http-status-codes": "^2.2.0"
   }
 }
