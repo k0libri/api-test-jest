@@ -1,12 +1,11 @@
-require('dotenv').config()
 import axios from 'axios';
-const baseUrl = process.env.BASE_URL;
 import { User, GetUsersResponse } from '../models/user';
 
-export async function getAllUsers() {
+const baseUrl = 'https://reqres.in/api'
+
+export const getAllUsers = async () => {
     try {
-        const response = await axios.get<GetUsersResponse>(`${baseUrl}/users`);
-        return response;
+        return await axios.get<GetUsersResponse>(`${baseUrl}/users`);
     } catch (error) {
         if (axios.isAxiosError(error)) {
             console.error('Axios error message: ', error.message);
@@ -18,15 +17,14 @@ export async function getAllUsers() {
     }
 };
 
-export async function userIdWithMethod(method: string, id: number){
+export const userIdWithMethod = async (method: string, id: number) => {
     const conf = {
         method: method,
         baseURL: baseUrl,
         url: `/users/${id}`
     }
     try {
-        const response = await axios<User>(conf);
-        return response;
+        return await axios<User>(conf);
     } catch (error) {
         if (axios.isAxiosError(error)) {
             console.error('Axios error message: ', error.message);
